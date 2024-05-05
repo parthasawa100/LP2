@@ -1,0 +1,13 @@
+ 
+public class degree {
+	public static Decimal celsiusToFahrenheit(Decimal celsius) {
+        Decimal fahrenheit = (celsius * 9/5) + 32;
+        return fahrenheit;
+    }
+}
+
+Decimal celsiusTemperature = 25;
+Decimal fahrenheitTemperature = degree.celsiusToFahrenheit(celsiusTemperature);
+
+System.debug('Temperature in Celsius: ' + celsiusTemperature);
+System.debug('Temperature in Fahrenheit: ' + fahrenheitTemperature);

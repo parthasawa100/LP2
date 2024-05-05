@@ -1,0 +1,14 @@
+ 
+public class currencyConverter {
+	 public static Decimal convertCurrency(Decimal amount, Decimal exchangeRate) {
+        return amount * exchangeRate;
+    }
+}
+
+Decimal amountToConvert = 100; // amount in base currency (e.g., USD)
+Decimal exchangeRate = 1.15;   // conversion rate (e.g., USD to EUR)
+
+Decimal convertedAmount = currencyConverter.convertCurrency(amountToConvert, exchangeRate);
+
+System.debug('Converted amount: ' + convertedAmount);
+

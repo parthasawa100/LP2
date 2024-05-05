@@ -1,0 +1,52 @@
+ 
+public class marksheet {
+	public class Student {
+        public String name { get; set; }
+        public Map<String, Integer> subjectsMarks { get; set; }
+        public Integer totalMarks { get; set; }
+        public Decimal percentage { get; set; }
+
+        public Student(String name, Map<String, Integer> subjectsMarks) {
+            this.name = name;
+            this.subjectsMarks = subjectsMarks;
+            calculateTotalMarks();
+            calculatePercentage();
+        }
+
+        private void calculateTotalMarks() {
+            totalMarks = 0;
+            for (Integer marks : subjectsMarks.values()) {
+                totalMarks += marks;
+            }
+        }
+
+        private void calculatePercentage() {
+            if (subjectsMarks.size() > 0) {
+                percentage = Decimal.valueOf(totalMarks) / subjectsMarks.size();
+            } else {
+                percentage = 0;
+            }
+        }
+    }
+
+    public static Student generateStudentMarkSheet(String name, Map<String, Integer> subjectsMarks) {
+        return new Student(name, subjectsMarks);
+    }
+}
+
+Map<String, Integer> subjectsMarks = new Map<String, Integer>{
+    'Maths' => 90,
+    'Science' => 85,
+    'English' => 75,
+    'History' => 80
+};
+
+marksheet.Student student = marksheet.generateStudentMarkSheet('John Doe', subjectsMarks);
+
+System.debug('Student Name: ' + student.name);
+System.debug('Total Marks: ' + student.totalMarks);
+System.debug('Percentage: ' + student.percentage + '%');
+
+for (String subject : student.subjectsMarks.keySet()) {
+    System.debug(subject + ': ' + student.subjectsMarks.get(subject));
+}

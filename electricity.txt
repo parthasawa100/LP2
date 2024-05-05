@@ -1,0 +1,16 @@
+ 
+public class electricity {
+	 public static Decimal calculateBill(Integer units) {
+        Decimal unitRate = 5.0; // Unit rate per kWh
+        Decimal billAmount = units * unitRate;
+
+        // Additional charges or discounts can be applied here if needed
+
+        return billAmount;
+    }
+}
+
+Integer unitsConsumed = 100;
+Decimal billAmount = electricity.calculateBill(unitsConsumed);
+
+System.debug('Electricity bill for ' + unitsConsumed + ' units: $' + billAmount);

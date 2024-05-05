@@ -1,0 +1,43 @@
+public class calculator {
+    public static Decimal add(Decimal num1, Decimal num2) {
+        return num1 + num2;
+    }
+
+    public static Decimal subtract(Decimal num1, Decimal num2) {
+        return num1 - num2;
+    }
+
+    public static Decimal multiply(Decimal num1, Decimal num2) {
+        return num1 * num2;
+    }
+
+    public static Decimal divide(Decimal num1, Decimal num2) {
+        if (num2 != 0) {
+            return num1 / num2;
+        } else {
+            throw new DivisionByZeroException('Cannot divide by zero');
+        }
+    }
+
+    public class DivisionByZeroException extends Exception {}
+}
+
+
+Decimal num1 = 10;
+Decimal num2 = 5;
+
+// Add
+Decimal resultAdd = calculator.add(num1, num2);
+System.debug('Addition result: ' + resultAdd);
+
+// Subtract
+Decimal resultSubtract = calculator.subtract(num1, num2);
+System.debug('Subtraction result: ' + resultSubtract);
+
+// Multiply
+Decimal resultMultiply = calculator.multiply(num1, num2);
+System.debug('Multiplication result: ' + resultMultiply);
+
+// Divide
+Decimal resultDivide = calculator.divide(num1, num2);
+System.debug('Division result: ' + resultDivide);
