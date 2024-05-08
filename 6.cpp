@@ -4,12 +4,14 @@
 
 using namespace std;
 
-class NQueens {
+class NQueens
+{
 private:
     int n;
     vector<vector<int>> board;
 
-    bool isSafe(int row, int col) {
+    bool isSafe(int row, int col)
+    {
         // Check if no queen is present in the same row on the left side
         for (int i = 0; i < col; ++i)
             if (board[row][i] == 1)
@@ -28,15 +30,19 @@ private:
         return true;
     }
 
-    bool solveBacktracking(int col) {
-        if (col >= n) {
+    bool solveBacktracking(int col)
+    {
+        if (col >= n)
+        {
             printBoard();
             return true;
         }
 
         bool res = false;
-        for (int i = 0; i < n; ++i) {
-            if (isSafe(i, col)) {
+        for (int i = 0; i < n; ++i)
+        {
+            if (isSafe(i, col))
+            {
                 board[i][col] = 1;
                 res = solveBacktracking(col + 1) || res;
                 board[i][col] = 0;
@@ -45,17 +51,22 @@ private:
         return res;
     }
 
-    bool solveBranchAndBound(int col) {
-        if (col >= n) {
+    bool solveBranchAndBound(int col)
+    {
+        if (col >= n)
+        {
             printBoard();
             return true;
         }
 
         bool res = false;
-        for (int i = 0; i < n; ++i) {
-            if (isSafe(i, col)) {
+        for (int i = 0; i < n; ++i)
+        {
+            if (isSafe(i, col))
+            {
                 board[i][col] = 1;
-                if (solveBranchAndBound(col + 1)) {
+                if (solveBranchAndBound(col + 1))
+                {
                     res = true;
                     // No need to explore further if we found a solution
                     break;
@@ -66,9 +77,12 @@ private:
         return res;
     }
 
-    void printBoard() const {
-        for (const auto& row : board) {
-            for (int cell : row) {
+    void printBoard() const
+    {
+        for (const auto &row : board)
+        {
+            for (int cell : row)
+            {
                 cout << cell << " ";
             }
             cout << endl;
@@ -77,21 +91,25 @@ private:
     }
 
 public:
-    NQueens(int size) : n(size) {
+    NQueens(int size) : n(size)
+    {
         board.assign(n, vector<int>(n, 0));
     }
 
-    void solveBacktracking() {
+    void solveBacktracking()
+    {
         solveBacktracking(0);
     }
 
-    void solveBranchAndBound() {
+    void solveBranchAndBound()
+    {
         solveBranchAndBound(0);
     }
 };
 
-int main() {
-    int n = 4; 
+int main()
+{
+    int n = 4;
     NQueens nQueens(n);
     cout << "Solutions using Backtracking:\n";
     nQueens.solveBacktracking();

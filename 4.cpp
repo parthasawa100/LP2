@@ -4,7 +4,8 @@
 
 using namespace std;
 
-int minimum_key(const vector<int>& key, const vector<bool>& mstSet) {
+int minimum_key(const vector<int> &key, const vector<bool> &mstSet)
+{
     int min = INT_MAX, minIndex;
 
     for (int v = 0; v < vertices; v++)
@@ -14,7 +15,8 @@ int minimum_key(const vector<int>& key, const vector<bool>& mstSet) {
     return minIndex;
 }
 
-void prim(const vector<vector<int>>& graph) {
+void prim(const vector<vector<int>> &graph)
+{
     vector<int> parent(vertices);
     vector<int> key(vertices, INF);
     vector<bool> mstSet(vertices, false);
@@ -22,7 +24,8 @@ void prim(const vector<vector<int>>& graph) {
     key[0] = 0;
     parent[0] = -1;
 
-    for (int count = 0; count < vertices - 1; count++) {
+    for (int count = 0; count < vertices - 1; count++)
+    {
         int u = minimum_key(key, mstSet);
         mstSet[u] = true;
 
@@ -36,7 +39,8 @@ void prim(const vector<vector<int>>& graph) {
         cout << " " << parent[i] << " <-> " << i << "    " << graph[i][parent[i]] << "\n";
 }
 
-int main() {
+int main()
+{
     vector<vector<int>> graph = {{0, 0, 3, 0, 0},
                                  {0, 0, 10, 4, 0},
                                  {3, 10, 0, 2, 6},
