@@ -86,7 +86,18 @@ vector<PuzzleState> getNextStates(const PuzzleState &current)
     }
     return nextStates;
 }
-
+void printPuzzle(const vector<vector<int>> &puzzle)
+{
+    for (const auto &row : puzzle)
+    {
+        for (int num : row)
+        {
+            cout << num << " ";
+        }
+        cout << endl;
+    }
+    cout<<endl;
+}
 // A* algorithm implementation
 vector<vector<int>> solvePuzzle(const vector<vector<int>> &initial)
 {
@@ -101,7 +112,7 @@ vector<vector<int>> solvePuzzle(const vector<vector<int>> &initial)
     {
         PuzzleState current = pq.top().second;
         pq.pop();
-
+        printPuzzle(current.board);
         if (current.h == 0)
         {
             // Found the goal state
@@ -126,17 +137,7 @@ vector<vector<int>> solvePuzzle(const vector<vector<int>> &initial)
 }
 
 // Function to print the puzzle board
-void printPuzzle(const vector<vector<int>> &puzzle)
-{
-    for (const auto &row : puzzle)
-    {
-        for (int num : row)
-        {
-            cout << num << " ";
-        }
-        cout << endl;
-    }
-}
+
 
 int main()
 {
